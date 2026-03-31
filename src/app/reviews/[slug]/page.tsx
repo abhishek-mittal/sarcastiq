@@ -89,6 +89,12 @@ function StarRating({ rating }: { rating: number }) {
   );
 }
 
+function scoreColor(value: number, low: number, mid: number): string {
+  if (value < low) return "text-lie-red";
+  if (value < mid) return "text-suspicious-yellow";
+  return "text-genuine-green";
+}
+
 export default async function ProductReviewPage({
   params,
 }: {
@@ -225,19 +231,19 @@ export default async function ProductReviewPage({
           </div>
           <div className="rounded-xl bg-surface-muted p-4 text-center">
             <p className="font-mono text-xs text-text-muted">Return Success</p>
-            <p className={`mt-1 font-display text-2xl font-bold ${product.serviceMetrics.returnSuccessRate < 40 ? "text-lie-red" : product.serviceMetrics.returnSuccessRate < 60 ? "text-suspicious-yellow" : "text-genuine-green"}`}>
+            <p className={`mt-1 font-display text-2xl font-bold ${scoreColor(product.serviceMetrics.returnSuccessRate, 40, 60)}`}>
               {product.serviceMetrics.returnSuccessRate}%
             </p>
           </div>
           <div className="rounded-xl bg-surface-muted p-4 text-center">
             <p className="font-mono text-xs text-text-muted">Delivery Rating</p>
-            <p className={`mt-1 font-display text-2xl font-bold ${product.serviceMetrics.deliveryRating < 3 ? "text-lie-red" : product.serviceMetrics.deliveryRating < 4 ? "text-suspicious-yellow" : "text-genuine-green"}`}>
+            <p className={`mt-1 font-display text-2xl font-bold ${scoreColor(product.serviceMetrics.deliveryRating, 3, 4)}`}>
               {product.serviceMetrics.deliveryRating}/5
             </p>
           </div>
           <div className="rounded-xl bg-surface-muted p-4 text-center">
             <p className="font-mono text-xs text-text-muted">Support Score</p>
-            <p className={`mt-1 font-display text-2xl font-bold ${product.serviceMetrics.customerSupportScore < 2 ? "text-lie-red" : product.serviceMetrics.customerSupportScore < 3 ? "text-suspicious-yellow" : "text-genuine-green"}`}>
+            <p className={`mt-1 font-display text-2xl font-bold ${scoreColor(product.serviceMetrics.customerSupportScore, 2, 3)}`}>
               {product.serviceMetrics.customerSupportScore}/5
             </p>
           </div>

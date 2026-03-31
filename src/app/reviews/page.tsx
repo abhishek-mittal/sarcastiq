@@ -47,6 +47,12 @@ function BuyOrCryBadge({ verdict }: { verdict: "buy" | "cry" | "maybe" }) {
   );
 }
 
+function supportScoreColor(score: number): string {
+  if (score < 2) return "bg-lie-red/8 text-lie-red";
+  if (score < 3) return "bg-suspicious-yellow/10 text-suspicious-yellow";
+  return "bg-genuine-green/10 text-genuine-green";
+}
+
 export default function ReviewsPage() {
   return (
     <main className="mx-auto max-w-6xl px-4 py-8">
@@ -120,7 +126,7 @@ export default function ReviewsPage() {
               <span className="rounded-lg bg-surface-muted px-2 py-0.5 font-mono text-xs text-text-secondary">
                 {p.totalReviews.toLocaleString("en-IN")} reviews
               </span>
-              <span className={`rounded-lg px-2 py-0.5 font-mono text-xs font-bold ${p.serviceMetrics.customerSupportScore < 2 ? "bg-lie-red/8 text-lie-red" : p.serviceMetrics.customerSupportScore < 3 ? "bg-suspicious-yellow/10 text-suspicious-yellow" : "bg-genuine-green/10 text-genuine-green"}`}>
+              <span className={`rounded-lg px-2 py-0.5 font-mono text-xs font-bold ${supportScoreColor(p.serviceMetrics.customerSupportScore)}`}>
                 🛎️ Support {p.serviceMetrics.customerSupportScore}/5
               </span>
             </div>
