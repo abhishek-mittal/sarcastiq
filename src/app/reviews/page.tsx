@@ -18,32 +18,58 @@ function RealityMeter({ score }: { score: number }) {
         : "bg-genuine-green";
   return (
     <div className="flex items-center gap-2">
-      <div className="h-2 flex-1 rounded-full bg-void-lighter">
+      <div className="h-2 flex-1 rounded-full bg-surface-muted">
         <div
           className={`h-2 rounded-full ${color}`}
           style={{ width: `${pct}%` }}
         />
       </div>
-      <span className="font-mono text-sm font-bold">{score.toFixed(1)}</span>
+      <span className="font-mono text-sm font-bold text-text">
+        {score.toFixed(1)}
+      </span>
     </div>
   );
+}
+
+function BuyOrCryBadge({ verdict }: { verdict: "buy" | "cry" | "maybe" }) {
+  const styles = {
+    buy: "bg-genuine-green/10 text-genuine-green border-genuine-green/30",
+    cry: "bg-lie-red/10 text-lie-red border-lie-red/30",
+    maybe: "bg-suspicious-yellow/10 text-suspicious-yellow border-suspicious-yellow/30",
+  };
+  const labels = { buy: "🛒 BUY", cry: "😭 CRY", maybe: "🤷 MAYBE" };
+  return (
+    <span
+      className={`inline-flex items-center rounded-lg border px-2 py-0.5 font-display text-xs font-bold ${styles[verdict]}`}
+    >
+      {labels[verdict]}
+    </span>
+  );
+}
+
+function supportScoreColor(score: number): string {
+  if (score < 2) return "bg-lie-red/8 text-lie-red";
+  if (score < 3) return "bg-suspicious-yellow/10 text-suspicious-yellow";
+  return "bg-genuine-green/10 text-genuine-green";
 }
 
 export default function ReviewsPage() {
   return (
     <main className="mx-auto max-w-6xl px-4 py-8">
+      {/* Navigation */}
       <div className="mb-2">
         <Link
           href="/"
-          className="font-mono text-sm text-gray-500 hover:text-toxic-green"
+          className="font-mono text-sm text-text-muted hover:text-primary transition-colors"
         >
           ← Back to home
         </Link>
       </div>
-      <h1 className="mb-2 font-display text-4xl font-bold text-white">
+
+      <h1 className="mb-2 font-display text-4xl font-bold text-text">
         All Roasted Products 🔥
       </h1>
-      <p className="mb-8 text-gray-400">
+      <p className="mb-8 text-text-secondary">
         {products.length} products analyzed ·{" "}
         {products
           .reduce(
@@ -55,50 +81,59 @@ export default function ReviewsPage() {
         fake reviews exposed
       </p>
 
-      <div className="grid gap-6">
-        {products.map((p) => (
+      {/* Bento product grid */}
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {products.map((p, i) => (
           <Link
             key={p.slug}
             href={`/reviews/${p.slug}/`}
-            className="gradient-border group grid gap-4 rounded-xl bg-void-gray p-6 transition hover:bg-void-lighter md:grid-cols-[1fr_auto]"
+            className={`bento-card group block p-6 ${i === 0 ? "md:col-span-2 lg:col-span-2 lg:row-span-1" : ""}`}
           >
-            <div>
-              <p className="mb-1 font-mono text-xs uppercase tracking-wider text-gray-500">
-                {p.category} · {p.source} · {p.price}
-              </p>
-              <h2 className="mb-1 font-display text-xl font-bold text-white group-hover:text-toxic-green transition-colors">
-                {p.productName}
-              </h2>
-              <p className="text-sm text-gray-400">{p.brand}</p>
-              <p className="mt-3 text-sm italic text-gray-500 leading-relaxed">
-                &ldquo;{p.sarcasticVerdict}&rdquo;
-              </p>
+            <div className="mb-3 flex items-start justify-between">
+              <div>
+                <p className="mb-1 font-mono text-xs uppercase tracking-wider text-text-muted">
+                  {p.category} · {p.source} · {p.price}
+                </p>
+                <h2 className="font-display text-xl font-bold text-text group-hover:text-primary transition-colors">
+                  {p.productName}
+                </h2>
+                <p className="text-sm text-text-secondary">{p.brand}</p>
+              </div>
+              <BuyOrCryBadge verdict={p.aiAnalysis.buyOrCry} />
             </div>
 
-            <div className="flex flex-col gap-3 md:w-56">
+            <div className="mb-3 grid grid-cols-2 gap-3">
               <div>
-                <p className="font-mono text-xs text-gray-500">
+                <p className="font-mono text-xs text-text-muted">
                   Seller&apos;s Delusion
                 </p>
-                <p className="font-bold text-white">
+                <p className="font-bold text-text">
                   {p.sellerRating}/5 ⭐
                 </p>
               </div>
               <div>
-                <p className="font-mono text-xs text-gray-500">
+                <p className="font-mono text-xs text-text-muted">
                   Reality Score 💀
                 </p>
                 <RealityMeter score={p.realityScore} />
               </div>
-              <div className="flex gap-2">
-                <span className="rounded bg-lie-red/10 px-2 py-0.5 font-mono text-xs font-bold text-lie-red">
-                  {p.fakeReviewPercent}% Fake
-                </span>
-                <span className="rounded bg-void-lighter px-2 py-0.5 font-mono text-xs text-gray-400">
-                  {p.totalReviews.toLocaleString("en-IN")} reviews
-                </span>
-              </div>
             </div>
+
+            <div className="mb-3 flex flex-wrap gap-2">
+              <span className="rounded-lg bg-lie-red/8 px-2 py-0.5 font-mono text-xs font-bold text-lie-red">
+                {p.fakeReviewPercent}% Fake
+              </span>
+              <span className="rounded-lg bg-surface-muted px-2 py-0.5 font-mono text-xs text-text-secondary">
+                {p.totalReviews.toLocaleString("en-IN")} reviews
+              </span>
+              <span className={`rounded-lg px-2 py-0.5 font-mono text-xs font-bold ${supportScoreColor(p.serviceMetrics.customerSupportScore)}`}>
+                🛎️ Support {p.serviceMetrics.customerSupportScore}/5
+              </span>
+            </div>
+
+            <p className="text-sm italic text-text-secondary leading-relaxed">
+              &ldquo;{p.sarcasticVerdict}&rdquo;
+            </p>
           </Link>
         ))}
       </div>
