@@ -210,6 +210,55 @@ export default async function ProductReviewPage({
         </div>
       </section>
 
+      {/* ═══ Service Metrics — Bento ═══ */}
+      <section className="mb-8 bento-card p-6">
+        <h2 className="mb-6 font-display text-xl font-bold text-primary">
+          🛎️ Seller &amp; Service Metrics
+        </h2>
+
+        <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4">
+          <div className="rounded-xl bg-surface-muted p-4 text-center">
+            <p className="font-mono text-xs text-text-muted">Return Policy</p>
+            <p className="mt-1 font-display text-sm font-bold text-text">
+              {product.serviceMetrics.returnPolicy}
+            </p>
+          </div>
+          <div className="rounded-xl bg-surface-muted p-4 text-center">
+            <p className="font-mono text-xs text-text-muted">Return Success</p>
+            <p className={`mt-1 font-display text-2xl font-bold ${product.serviceMetrics.returnSuccessRate < 40 ? "text-lie-red" : product.serviceMetrics.returnSuccessRate < 60 ? "text-suspicious-yellow" : "text-genuine-green"}`}>
+              {product.serviceMetrics.returnSuccessRate}%
+            </p>
+          </div>
+          <div className="rounded-xl bg-surface-muted p-4 text-center">
+            <p className="font-mono text-xs text-text-muted">Delivery Rating</p>
+            <p className={`mt-1 font-display text-2xl font-bold ${product.serviceMetrics.deliveryRating < 3 ? "text-lie-red" : product.serviceMetrics.deliveryRating < 4 ? "text-suspicious-yellow" : "text-genuine-green"}`}>
+              {product.serviceMetrics.deliveryRating}/5
+            </p>
+          </div>
+          <div className="rounded-xl bg-surface-muted p-4 text-center">
+            <p className="font-mono text-xs text-text-muted">Support Score</p>
+            <p className={`mt-1 font-display text-2xl font-bold ${product.serviceMetrics.customerSupportScore < 2 ? "text-lie-red" : product.serviceMetrics.customerSupportScore < 3 ? "text-suspicious-yellow" : "text-genuine-green"}`}>
+              {product.serviceMetrics.customerSupportScore}/5
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-4 grid gap-4 md:grid-cols-2">
+          <div className="rounded-xl bg-surface-muted p-4">
+            <p className="font-mono text-xs text-text-muted mb-1">⏱️ Seller Response Time</p>
+            <p className="font-display text-sm font-bold text-text">
+              {product.serviceMetrics.sellerResponseTime}
+            </p>
+          </div>
+          <div className="rounded-xl bg-accent/5 p-4 border border-accent/15">
+            <p className="font-mono text-xs text-accent mb-1">🎭 Service Reality Check</p>
+            <p className="text-sm text-text-secondary leading-relaxed italic">
+              &ldquo;{product.serviceMetrics.sarcasticServiceVerdict}&rdquo;
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* ═══ STEP 2: Detailed AI Analysis (Bento) ═══ */}
       <section className="mb-8 bento-card p-6">
         <h2 className="mb-6 font-display text-xl font-bold text-truth-blue">

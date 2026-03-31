@@ -1,3 +1,12 @@
+export interface ServiceMetrics {
+  returnPolicy: string;
+  returnSuccessRate: number;
+  deliveryRating: number;
+  customerSupportScore: number;
+  sellerResponseTime: string;
+  sarcasticServiceVerdict: string;
+}
+
 export interface ProductReview {
   slug: string;
   productName: string;
@@ -13,6 +22,7 @@ export interface ProductReview {
   sarcasticVerdict: string;
   whatTheySay: string;
   whatTheyMean: string;
+  serviceMetrics: ServiceMetrics;
   aiAnalysis: {
     sentimentBreakdown: {
       genuine: number;

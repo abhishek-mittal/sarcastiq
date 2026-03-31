@@ -113,12 +113,15 @@ export default function ReviewsPage() {
               </div>
             </div>
 
-            <div className="mb-3 flex gap-2">
+            <div className="mb-3 flex flex-wrap gap-2">
               <span className="rounded-lg bg-lie-red/8 px-2 py-0.5 font-mono text-xs font-bold text-lie-red">
                 {p.fakeReviewPercent}% Fake
               </span>
               <span className="rounded-lg bg-surface-muted px-2 py-0.5 font-mono text-xs text-text-secondary">
                 {p.totalReviews.toLocaleString("en-IN")} reviews
+              </span>
+              <span className={`rounded-lg px-2 py-0.5 font-mono text-xs font-bold ${p.serviceMetrics.customerSupportScore < 2 ? "bg-lie-red/8 text-lie-red" : p.serviceMetrics.customerSupportScore < 3 ? "bg-suspicious-yellow/10 text-suspicious-yellow" : "bg-genuine-green/10 text-genuine-green"}`}>
+                🛎️ Support {p.serviceMetrics.customerSupportScore}/5
               </span>
             </div>
 

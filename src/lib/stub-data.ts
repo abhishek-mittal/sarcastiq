@@ -18,6 +18,15 @@ export const products: ProductReview[] = [
     whatTheySay: "Amazing sound quality with deep bass. Best earbuds under ₹2000!",
     whatTheyMean:
       "I got these free for a 5-star review and haven't actually listened to music since 2019.",
+    serviceMetrics: {
+      returnPolicy: "7-day return",
+      returnSuccessRate: 34,
+      deliveryRating: 3.8,
+      customerSupportScore: 1.2,
+      sellerResponseTime: "3-5 business days (or never)",
+      sarcasticServiceVerdict:
+        "Return policy exists on paper. In reality, the seller ghosts you faster than your Tinder match. Customer support replies with 'kindly adjust' to every complaint.",
+    },
     aiAnalysis: {
       sentimentBreakdown: {
         genuine: 18,
@@ -93,6 +102,15 @@ export const products: ProductReview[] = [
       "After just 2 days my skin is glowing! All my wrinkles are gone! My husband can't recognize me!",
     whatTheyMean:
       "I applied so much cream that the reflection off the grease makes me look luminous. My husband can't recognize me because I've been in the bathroom for 6 hours.",
+    serviceMetrics: {
+      returnPolicy: "10-day return (Flipkart Assured)",
+      returnSuccessRate: 28,
+      deliveryRating: 4.1,
+      customerSupportScore: 1.5,
+      sellerResponseTime: "24 hours (auto-reply only)",
+      sarcasticServiceVerdict:
+        "Flipkart Assured means the delivery is assured, not the quality. Try returning this and you'll get a refund in 'Flipkart SuperCoins' — the cryptocurrency nobody asked for.",
+    },
     aiAnalysis: {
       sentimentBreakdown: {
         genuine: 12,
@@ -160,6 +178,15 @@ export const products: ProductReview[] = [
       "Incredible smartwatch! GPS, heart rate, SpO2, military grade build. Apple Watch killer!",
     whatTheyMean:
       "The GPS thinks I'm in Pakistan when I'm in Pune. The heart rate monitor says I'm dead when I'm sleeping. But hey, it was cheap!",
+    serviceMetrics: {
+      returnPolicy: "7-day return (both platforms)",
+      returnSuccessRate: 45,
+      deliveryRating: 3.2,
+      customerSupportScore: 2.1,
+      sellerResponseTime: "2-4 business days",
+      sarcasticServiceVerdict:
+        "StealthFit's customer support is as stealthy as their brand name — you'll never find them. When they do respond, it's a copy-paste FAQ link that doesn't answer your question.",
+    },
     aiAnalysis: {
       sentimentBreakdown: {
         genuine: 24,
@@ -228,6 +255,15 @@ export const products: ProductReview[] = [
       "Lost 5 kgs in one week just by drinking this tea! No exercise needed!",
     whatTheyMean:
       "I also started eating only salads and running 5km daily but sure, it was definitely the tea.",
+    serviceMetrics: {
+      returnPolicy: "30-day return",
+      returnSuccessRate: 62,
+      deliveryRating: 4.4,
+      customerSupportScore: 3.2,
+      sellerResponseTime: "Within 24 hours",
+      sarcasticServiceVerdict:
+        "Surprisingly decent service — probably because tea is cheap enough that refunding you doesn't hurt. The 30-day return window is generous, but then again, you'll finish the tea before you realize it didn't make you thin.",
+    },
     aiAnalysis: {
       sentimentBreakdown: {
         genuine: 32,
@@ -287,6 +323,15 @@ export const products: ProductReview[] = [
       "Unbelievable sound! My neighbors can hear it clearly! Party speaker!",
     whatTheyMean:
       "My neighbors filed a noise complaint but technically that proves the volume works.",
+    serviceMetrics: {
+      returnPolicy: "7-day return (both platforms)",
+      returnSuccessRate: 55,
+      deliveryRating: 3.9,
+      customerSupportScore: 2.8,
+      sellerResponseTime: "1-2 business days",
+      sarcasticServiceVerdict:
+        "BoomBox has okay-ish service for the price range. Returns work if you're persistent enough. Customer support will ask you to 'try restarting the device' for literally every problem, including a cracked shell.",
+    },
     aiAnalysis: {
       sentimentBreakdown: {
         genuine: 35,
@@ -347,6 +392,15 @@ export const products: ProductReview[] = [
       "Completely eliminated my back pain! Best investment for WFH!",
     whatTheyMean:
       "I stood up more often because sitting in this chair for more than an hour is a form of punishment. Less sitting = less back pain. Science!",
+    serviceMetrics: {
+      returnPolicy: "10-day return (heavy item surcharge)",
+      returnSuccessRate: 41,
+      deliveryRating: 3.0,
+      customerSupportScore: 2.4,
+      sellerResponseTime: "3-7 business days",
+      sarcasticServiceVerdict:
+        "Good luck returning a 15kg chair. The return pickup was 'attempted' three times while you were allegedly not home (you were). SitRight's support will offer you a ₹200 coupon instead of a refund every single time.",
+    },
     aiAnalysis: {
       sentimentBreakdown: {
         genuine: 42,
