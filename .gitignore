@@ -4,3 +4,7 @@ out/
 *.tsbuildinfo
 .env*.local
 package-lock.json
+
+# RNA Method — runtime state (managed by agents during sessions)
+_memory/
+
