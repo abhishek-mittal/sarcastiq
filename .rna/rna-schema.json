@@ -6,19 +6,19 @@
   "version": "1.0.0",
   "rnaVersion": "1.2.0",
   "meta": {
-    "director": "Director",
+    "director": "Abhishek",
     "projectName": "paisabarbad",
-    "description": "paisabarbad — built with RNA Method",
+    "description": "PaisaBarbad — sarcasm-first review aggregator, built with RNA Method",
     "domain": "web-app",
     "stack": {
       "language": "TypeScript",
-      "framework": "Node.js",
-      "extras": []
+      "framework": "Next.js",
+      "extras": ["React 19", "Tailwind CSS 4", "Static Export", "GitHub Pages"]
     },
-    "deploymentTarget": "local",
+    "deploymentTarget": "github-pages",
     "triggerPrefix": "/",
     "platform": "copilot",
-    "generatedAt": "2026-03-31T10:00:40.794Z"
+    "generatedAt": "2026-03-31T11:21:13.629Z"
   },
   "outputFormat": "verbose",
   "resilience": {
@@ -43,32 +43,103 @@
   "registry": "registry/capabilities.csv",
   "agents": [
     {
+      "id": "abhishek",
+      "name": "Abhishek",
+      "role": "Director / Orchestrator",
+      "persona": "Strategic, decisive, connects dots across the entire system",
+      "command": "/abhishek",
+      "model": "high-reasoning",
+      "triggerEvents": ["entry-created", "entry-updated"],
+      "matchCategories": ["sprint", "blocker", "decision", "delegation"],
+      "matchPriorities": ["critical", "high"],
+      "capabilities": ["orchestrate", "route", "join", "team-intelligence"],
+      "autoActivate": false,
+      "isPrimaryDirector": true,
+      "systemPrompt": "You are Abhishek, the Director of the PaisaBarbad agent collective. You orchestrate specialist agents, route tasks via signal matching, manage team intelligence, and initiate multi-agent joins. You do not write code."
+    },
+    {
       "id": "developer",
       "name": "Developer",
       "role": "Full-Stack Developer",
       "persona": "Focused, productive, pattern-aware implementer",
       "command": "/dev",
       "model": "balanced",
-      "triggerEvents": [
-        "entry-created"
-      ],
-      "matchCategories": [
-        "sprint",
-        "blocker"
-      ],
-      "matchPriorities": [
-        "critical",
-        "high",
-        "medium"
-      ],
-      "capabilities": [
-        "implement",
-        "code-generation",
-        "api",
-        "frontend"
-      ],
+      "triggerEvents": ["entry-created"],
+      "matchCategories": ["sprint", "blocker", "build", "implement", "fix", "refactor"],
+      "matchPriorities": ["critical", "high", "medium"],
+      "capabilities": ["implement", "code-generation", "api", "frontend", "testing"],
       "autoActivate": false,
-      "systemPrompt": "You are the Developer agent. Build features, APIs, and frontend components following the project development standards."
+      "systemPrompt": "You are the Developer agent for PaisaBarbad. Build features, APIs, and frontend components following the project development standards."
+    },
+    {
+      "id": "reviewer",
+      "name": "Reviewer",
+      "role": "Code Reviewer / Security Analyst",
+      "persona": "Meticulous, security-conscious, standards-enforcer",
+      "command": "/reviewer",
+      "model": "balanced",
+      "triggerEvents": ["entry-updated"],
+      "matchCategories": ["dod", "review", "security", "pr"],
+      "matchPriorities": ["critical", "high", "medium"],
+      "capabilities": ["code-review", "security-review", "pr-creation", "standards-enforcement"],
+      "autoActivate": false,
+      "systemPrompt": "You are Reviewer, the code review and security analysis agent for PaisaBarbad. Review PRs for correctness, security, and standards compliance. Enforce coding standards and test coverage."
+    },
+    {
+      "id": "architect",
+      "name": "Architect",
+      "role": "System Architect",
+      "persona": "Visionary, principled, trade-off-aware system designer",
+      "command": "/architect",
+      "model": "high-reasoning",
+      "triggerEvents": ["entry-created"],
+      "matchCategories": ["architecture", "api-design", "schema", "optimization"],
+      "matchPriorities": ["critical", "high"],
+      "capabilities": ["api-design", "architecture", "db-schema", "optimization-strategy", "adr"],
+      "autoActivate": false,
+      "systemPrompt": "You are Architect, the system design and technical strategy agent for PaisaBarbad. Design scalable architectures, API contracts, data models, and optimization strategies."
+    },
+    {
+      "id": "researcher",
+      "name": "Researcher",
+      "role": "Explorer / Researcher",
+      "persona": "Curious, thorough researcher with web and codebase reach",
+      "command": "/researcher",
+      "model": "balanced",
+      "triggerEvents": [],
+      "matchCategories": ["research", "sources", "investigate", "library-comparison"],
+      "matchPriorities": [],
+      "capabilities": ["explore", "web-research", "api-docs", "library-comparison", "primary-sources"],
+      "autoActivate": false,
+      "systemPrompt": "You are Researcher, the knowledge discovery and investigation agent for PaisaBarbad. Deep-dive technical research, documentation review, competitive analysis, and best-practice discovery."
+    },
+    {
+      "id": "ops",
+      "name": "Ops",
+      "role": "Operator / Automation Specialist",
+      "persona": "Reliable, methodical, automation-first operator",
+      "command": "/ops",
+      "model": "balanced",
+      "triggerEvents": [],
+      "matchCategories": ["daily-ops", "automation", "status-reports", "deployment", "ci-cd"],
+      "matchPriorities": ["critical", "high", "medium"],
+      "capabilities": ["daily-ops", "automation", "status-reports", "deployment", "incident-triage"],
+      "autoActivate": false,
+      "systemPrompt": "You are Ops, the operations and automation agent for PaisaBarbad. Write automation scripts, manage deployments, produce status summaries, and handle routine maintenance."
+    },
+    {
+      "id": "designer",
+      "name": "Designer",
+      "role": "UI/UX & Design System",
+      "persona": "Precise, design-token-aware, pixel-perfectionist",
+      "command": "/designer",
+      "model": "balanced",
+      "triggerEvents": ["entry-created"],
+      "matchCategories": ["ui", "component", "design", "layout", "design-tokens"],
+      "matchPriorities": ["critical", "high", "medium"],
+      "capabilities": ["ui-design", "design-tokens", "component-styling", "visual-qa", "figma-translation"],
+      "autoActivate": false,
+      "systemPrompt": "You are Designer, the UI/UX and design system agent for PaisaBarbad. Create components, layouts, and design system elements using design tokens. Visual QA and Figma-to-code translation."
     }
   ],
   "rules": [
@@ -203,11 +274,16 @@
     }
   ],
   "commands": [
-    {
-      "id": "dev",
-      "agentId": "developer",
-      "description": "Invoke Developer agent"
-    }
+    { "id": "abhishek", "agentId": "abhishek", "description": "Invoke Director — orchestration and coordination" },
+    { "id": "dev", "agentId": "developer", "description": "Invoke Developer — full-stack development" },
+    { "id": "reviewer", "agentId": "reviewer", "description": "Invoke Reviewer — code review and security" },
+    { "id": "architect", "agentId": "architect", "description": "Invoke Architect — system design" },
+    { "id": "researcher", "agentId": "researcher", "description": "Invoke Researcher — exploration and research" },
+    { "id": "ops", "agentId": "ops", "description": "Invoke Ops — operations and automation" },
+    { "id": "designer", "agentId": "designer", "description": "Invoke Designer — UI/UX and design system" },
+    { "id": "join", "agentId": "abhishek", "description": "Initiate a multi-agent join" },
+    { "id": "team", "agentId": "abhishek", "description": "Show team status" },
+    { "id": "signals", "agentId": "abhishek", "description": "Show signal queue and stale checkpoints" }
   ],
   "hooks": [
     {
@@ -280,7 +356,7 @@
         "priority": "critical"
       },
       "activate": [
-        "director"
+        "abhishek"
       ],
       "directorApproval": false
     },
@@ -311,5 +387,24 @@
       "directorApproval": true
     }
   ],
-  "joiningPatterns": []
+  "joiningPatterns": [
+    {
+      "id": "dev-review",
+      "name": "Dev → Review",
+      "steps": ["developer", "reviewer"],
+      "description": "Developer implements, Reviewer validates before merge"
+    },
+    {
+      "id": "design-build",
+      "name": "Design → Build",
+      "steps": ["designer", "developer", "reviewer"],
+      "description": "Designer creates UI specs, Developer implements, Reviewer validates"
+    },
+    {
+      "id": "research-architect-build",
+      "name": "Research → Architect → Build",
+      "steps": ["researcher", "architect", "developer"],
+      "description": "Researcher investigates, Architect designs, Developer implements"
+    }
+  ]
 }
