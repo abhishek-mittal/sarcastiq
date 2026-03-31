@@ -60,10 +60,10 @@ ProductReview
 
 ## Design Language
 
-- **Theme:** Dark-mode-first with neon accents (toxic green, sarcasm pink, roast orange)
+- **Theme:** Light, clean design with bento grid layouts and subtle accents
 - **Typography:** Space Grotesk (display), Inter (body), JetBrains Mono (data/mono)
-- **Palette:** Void black base, color-coded review flags (green=genuine, yellow=suspicious, purple=copypasta, orange=bribed, red=lie)
-- **Vibe:** Cyberpunk meets consumer activism — feels like a hacker terminal exposing the truth
+- **Palette:** White/slate surfaces, indigo primary, pink accent, color-coded review flags (green=genuine, yellow=suspicious, purple=copypasta, orange=bribed, red=lie)
+- **Vibe:** Professional yet playful — clean bento cards with appealing whitespace and soft borders
 
 ## Architecture
 
@@ -109,4 +109,4 @@ When working on this project:
 - **Indian context matters** — prices in ₹, platforms are Amazon.in & Flipkart, cultural references are Indian
 - **SEO/AEO first** — every page needs proper metadata, structured data potential
 - **Static export** — no server required, everything builds to static HTML
-- **Dark mode only** — this is not a "light theme" kind of product
+- **Light theme** — clean bento grid design with white surfaces and subtle accents
